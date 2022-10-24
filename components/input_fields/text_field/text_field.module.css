@@ -1,0 +1,256 @@
+.form_field {
+  position: relative;
+  width: 100%;
+}
+
+.form_field textarea {
+  width: 100%;
+  background-color: #f4f4f3;
+  box-sizing: border-box;
+  display: block;
+  height: 60px;
+  font-size: 16px;
+  padding: 26px 16px 0px 16px;
+  outline: none;
+  border-radius: 8px;
+  font-family: "Cycle";
+  color: #212226;
+  font-weight: 400;
+  border: 2px solid transparent;
+  transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  min-height: 50px;
+  max-height: 400px;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 160px;
+}
+
+.focused textarea {
+  transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  border: 2px solid #1d1a0e;
+  background-color: white;
+}
+
+.has_icon textarea {
+  padding-right: 48px;
+}
+
+.has_help {
+  margin-bottom: 32px;
+}
+
+.has_error textarea {
+  border: 2px solid #ff5d73;
+}
+
+.label {
+  pointer-events: none;
+  height: fit-content;
+  position: absolute;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+  top: 19px;
+  margin: auto;
+  left: 16px;
+  transition: 0.1s ease-in-out;
+}
+
+.small_label {
+  top: 10px;
+  bottom: unset;
+  transition: 0.1s ease-in-out;
+  font-size: 12px;
+}
+
+.password textarea {
+  letter-spacing: 4px;
+}
+
+.form_field textarea:focus {
+  outline: none;
+  transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.error {
+  position: absolute;
+  bottom: -36px;
+  color: #ff5d73;
+  font-size: 12px;
+  left: 0;
+  font-weight: 400;
+  text-align: left;
+  transition: 0.2s ease-in;
+  height: 30px;
+}
+
+.has_help .error {
+  width: 80%;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.disabled * {
+  cursor: default;
+  pointer-events: none;
+}
+
+.toggle_icon,
+.icon {
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  position: absolute;
+  right: 36px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.icon {
+  right: 8px;
+}
+
+.toggle_icon:hover {
+  background-color: #f0efef;
+  transform: scale(1.1);
+  transition: 0.2s ease-out;
+}
+
+.icon svg {
+  transition: 0.2s ease-out;
+  max-height: 14px;
+  max-width: 14px;
+}
+
+.focused .icon svg path {
+  fill: #1d1a0e;
+  transition: 0.2s ease-out;
+}
+
+.form_field_error textarea {
+  border: 2px solid #ff5d73;
+}
+
+.help_link {
+  background-color: transparent;
+  height: 32px;
+  position: absolute;
+  bottom: -32px;
+  color: #8d8980;
+  right: 0;
+  font-size: 12px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: underline;
+  background-color: white;
+}
+
+.help_link svg {
+  margin: 0 8px 2px 0;
+}
+
+.help {
+  -webkit-box-shadow: 0px 0px 19px 1px rgba(8, 6, 28, 0.1);
+  box-shadow: 0px 10px 50px -10px rgba(8, 6, 28, 0.4);
+  background-color: white;
+  border-radius: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 24px;
+  font-size: 14px;
+  position: absolute;
+  bottom: -210px;
+  transform: translateY(-10px);
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  font-weight: 300;
+}
+
+.help_header {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 13px;
+}
+
+.help_header svg {
+  margin: 0 8px 4px 0;
+}
+
+.help_link:hover {
+  cursor: pointer;
+}
+
+.help_link:hover + .help {
+  transform: translateY(0);
+  transition: 0.2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+  user-select: all;
+}
+
+/*PLACEHOLDER*/
+.form_field textarea::-webkit-textarea-placeholder {
+  opacity: 0;
+}
+.form_field textarea::-moz-placeholder {
+  opacity: 0;
+}
+.form_field textarea:-ms-textarea-placeholder {
+  opacity: 0;
+}
+.form_field textarea:-moz-placeholder {
+  opacity: 0;
+}
+
+.focused textarea::-webkit-textarea-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+.focused textarea::-moz-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+.focused textarea:-ms-textarea-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+.focused textarea:-moz-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.help_link {
+  pointer-events: all;
+  cursor: pointer;
+}

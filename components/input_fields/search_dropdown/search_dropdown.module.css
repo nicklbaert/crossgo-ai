@@ -1,0 +1,119 @@
+.wrapper {
+  width: 100%;
+  position: relative;
+  height: 60px;
+}
+
+.options_wrapper {
+  background-color: #fff;
+  position: relative;
+  border-radius: 12px;
+  height: 250px;
+  width: 100%;
+  margin-top: 8px;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-box-shadow: 0px 0px 19px 1px rgba(8, 6, 28, 0.1);
+  box-shadow: 0px 0px 19px 1px rgba(8, 6, 28, 0.1);
+  box-sizing: border-box;
+  padding: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transform: scale(0);
+  transition: 0.2s cubic-bezier(0.52, -0.32, 0.27, 1.29);
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.options_wrapper_open {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+  transition: 0.2s cubic-bezier(0.52, -0.32, 0.27, 1.29);
+}
+
+.option {
+  border-bottom: 1px solid #f8f8f7;
+  color: #1d1a0e;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 12px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.option:hover {
+  transition: 0.1s ease-in-out;
+  background-color: #f8f8f7;
+}
+
+.option:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.option:last-child {
+  border-radius: 0 0 12px 12px;
+}
+
+.option_icon {
+  width: 46px;
+  height: 46px;
+  background-color: #f4f4f3;
+  border-radius: 8px;
+  border: 1px solid #f4f4f3;
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option_icon_mock {
+  width: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.option_info {
+  width: calc(100% - 70px);
+}
+
+.option_title {
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.option_subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: -0.3px;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.disabled * {
+  cursor: default;
+  pointer-events: none;
+}
+
+.error {
+  font-size: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  color: #c3c0c0;
+}

@@ -1,0 +1,247 @@
+.form_field {
+  position: relative;
+  width: 100%;
+}
+
+.form_field input {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  height: 60px;
+  font-size: 16px;
+  padding: 20px 16px 0px 16px;
+  outline: none;
+  border-radius: 8px;
+  transition: 0.25s ease-out;
+  color: #1d1a0e;
+  background-color: transparent;
+  font-weight: 300;
+  border: 2px solid #c4beb1;
+  transition: 0.2s ease-in-out;
+}
+
+.focused input {
+  transition: 0.2s ease-in-out;
+  border: 2px solid #1d1a0e;
+}
+
+.has_icon input {
+  padding-right: 48px;
+}
+
+.has_help {
+  margin-bottom: 32px;
+}
+
+.has_error input {
+  border: 2px solid #ff5d73;
+}
+
+.label {
+  pointer-events: none;
+  height: fit-content;
+  position: absolute;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 16px;
+  transition: 0.1s ease-in-out;
+}
+
+.small_label {
+  bottom: 24px;
+  transition: 0.1s ease-in-out;
+  font-size: 12px;
+}
+
+.password input {
+  letter-spacing: 4px;
+}
+
+.form_field input:focus {
+  outline: none;
+  transition: 0.25s ease-in;
+}
+
+.error {
+  position: absolute;
+  bottom: -26px;
+  color: #ff5d73;
+  font-size: 12px;
+  right: 0;
+  font-weight: 400;
+  text-align: left;
+  line-height: 30px;
+  transition: 0.2s ease-in;
+  height: 30px;
+  line-height: 30px;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.disabled * {
+  cursor: default;
+  pointer-events: none;
+}
+
+.toggle_icon,
+.icon {
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  position: absolute;
+  right: 36px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.icon {
+  right: 8px;
+}
+
+.toggle_icon:hover {
+  background-color: #f0efef;
+  transform: scale(1.1);
+  transition: 0.2s ease-out;
+}
+
+.icon svg {
+  transition: 0.2s ease-out;
+  max-height: 14px;
+  max-width: 14px;
+}
+
+.focused .icon svg path {
+  fill: #1d1a0e;
+  transition: 0.2s ease-out;
+}
+
+.form_field_error input {
+  border: 2px solid #ff5d73;
+}
+
+.help_link {
+  background-color: transparent;
+  height: 32px;
+  position: absolute;
+  bottom: -32px;
+  color: #8d8980;
+  right: 0;
+  font-size: 12px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: underline;
+}
+
+.help_link svg {
+  margin: 0 8px 2px 0;
+}
+
+.help {
+  -webkit-box-shadow: 0px 0px 19px 1px rgba(8, 6, 28, 0.1);
+  box-shadow: 0px 10px 50px -10px rgba(8, 6, 28, 0.4);
+  background-color: white;
+  border-radius: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 24px;
+  font-size: 14px;
+  position: absolute;
+  top: 107px;
+  transform: translateY(-10px);
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  font-weight: 300;
+}
+
+.help_header {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 13px;
+}
+
+.help_header svg {
+  margin: 0 8px 4px 0;
+}
+
+.help_link:hover {
+  cursor: pointer;
+}
+
+.help_link:hover + .help {
+  transform: translateY(0);
+  transition: 0.2s ease-in-out;
+  opacity: 1;
+  pointer-events: all;
+  user-select: all;
+}
+
+/*PLACEHOLDER*/
+.form_field input::-webkit-input-placeholder {
+  opacity: 0;
+}
+.form_field input::-moz-placeholder {
+  opacity: 0;
+}
+.form_field input:-ms-input-placeholder {
+  opacity: 0;
+}
+.form_field input:-moz-placeholder {
+  opacity: 0;
+}
+
+.focused input::-webkit-input-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+.focused input::-moz-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+.focused input:-ms-input-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+.focused input:-moz-placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #8d8980;
+  font-weight: 300;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.help_link {
+  pointer-events: all;
+  cursor: pointer;
+}

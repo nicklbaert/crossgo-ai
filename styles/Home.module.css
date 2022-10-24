@@ -1,129 +1,127 @@
-.container {
-  padding: 0 2rem;
+.new_method_button {
+  position: relative;
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.button_options {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  display: none;
+  position: absolute;
+  top: 45px;
+  width: 150%;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: white;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 8px 0;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  .code {
-    background: #111;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .logo img {
-    filter: invert(1);
-  }
+}
+
+.new_method_button:hover .button_options {
+  display: block;
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+.new_method_button:hover button {
+  opacity: 0.7;
+}
+
+.button_option {
+  display: flex;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 16px 16px 16px 16px;
+  transition: 0.2s ease-in-out;
+  justify-content: space-between;
+}
+
+.button_option svg {
+  width: 14px;
+  transform: translateY(-1px);
+}
+
+.button_option:hover {
+  background-color: #f8f7f5;
+  transition: 0.2s ease-in-out;
+}
+
+.method {
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  padding: 16px;
+  max-width: 700px;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.method_left {
+  display: flex;
+  align-items: center;
+}
+
+.method_icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 8px;
+  background-color: #f8f7f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.method_title {
+  font-size: 16px;
+}
+
+.method_subtitle {
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.edit_button {
+  background-color: #f8f7f5;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  color: #8133ff;
+}
+
+.edit_button:hover {
+  background-color: #ebe8e2;
+}
+
+.subtitle {
+  font-weight: 500;
+  margin-bottom: 24px;
 }

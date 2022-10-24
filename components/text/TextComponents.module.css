@@ -1,0 +1,23 @@
+.huge_heading {
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 65px;
+  letter-spacing: -1px;
+}
+
+.big_heading {
+  font-weight: 500;
+  line-height: 60px;
+
+}
+
+.sub_heading {
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: -1px;
+}
+
+.paragraph {
+  font-weight: 500;
+  line-height: 2;
+}
