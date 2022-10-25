@@ -8,7 +8,7 @@ import { method_presets } from "../../components/input_fields/default_values";
 import { SearchableDropdown } from "../../components/input_fields/search_dropdown/search_dropdown";
 import { Spacer } from "../../components/spacer/Spacers";
 import { guid } from "../../helpers/util";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Dashboard.module.css";
 
 const Home: NextPage = () => {
   const [showButtonOptions, setShowButtonOptions] = useState(false);
