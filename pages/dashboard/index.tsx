@@ -259,7 +259,7 @@ const Home: NextPage = () => {
         return (
           <div className={styles.wrapper}>
             <div className={styles.subtitle}>
-              Lege für jedes Detail 5 Makros fest
+              Lege für jedes Detail 5 Makroschritte fest
             </div>
             {[0, 1, 2, 3, 4].map((index) => {
               return (
@@ -271,7 +271,7 @@ const Home: NextPage = () => {
                     return (
                       <div key={guid()}>
                         <BasicInputField
-                          label={`Makro ${makroIndex + 1}`}
+                          label={`Makroschritt ${makroIndex + 1}`}
                           onChange={(val: string) => {
                             //changeDetailNameAtIndex(index, val);
                           }}
