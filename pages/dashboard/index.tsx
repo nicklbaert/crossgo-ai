@@ -30,7 +30,10 @@ const Home: NextPage = () => {
     details: Detail[];
   };
 
-  const [newMethod, setNewMethod] = useState(null as Method | null);
+  const [newMethod, setNewMethod] = useState({
+    name: "",
+    details: [],
+  } as Method | null);
 
   const [currentTab, setCurrentTab] = useState(dashboardTabs.default);
 
@@ -142,14 +145,14 @@ const Home: NextPage = () => {
     }
   }
 
-  // function changeDetailNameAtIndex(index: number, value: string) {
-  //   let newDetails = [...newMethod!.details];
+  function changeDetailNameAtIndex(index: number, value: string) {
+    let newDetails = [...newMethod!.details];
 
-  //   if (!newDetails[index]) newDetails[index] = { name: value, macros: [] };
+    if (!newDetails[index]) newDetails[index] = { name: value, macros: [] };
 
-  //   newDetails[index].name = value;
-  //   setNewMethod({ ...newMethod, details: newDetails } as Method);
-  // }
+    newDetails[index].name = value;
+    setNewMethod({ ...newMethod, details: newDetails } as Method);
+  }
 
   // function changeMacroAtIndex(
   //   detailIndex: number,
@@ -199,7 +202,12 @@ const Home: NextPage = () => {
               })}
               searchFunction={async (val: string) => {
                 return method_presets
-                  .filter((preset) => preset.toLowerCase().replaceAll(' ', '').includes(val.toLowerCase().replaceAll(' ', '')))
+                  .filter((preset) =>
+                    preset
+                      .toLowerCase()
+                      .replaceAll(" ", "")
+                      .includes(val.toLowerCase().replaceAll(" ", ""))
+                  )
                   .map((preset) => {
                     return {
                       title: preset,
@@ -208,7 +216,7 @@ const Home: NextPage = () => {
                   });
               }}
             />
-             <Spacer type="vertical" size={40} />
+            <Spacer type="vertical" size={40} />
             <ActionButton
               onClick={() => setCurrentTab(dashboardTabs.step_2)}
               width={"160px"}
@@ -230,7 +238,7 @@ const Home: NextPage = () => {
                   <BasicInputField
                     label={`Detail ${index + 1}`}
                     onChange={(val: string) => {
-                      //changeDetailNameAtIndex(index, val);
+                      changeDetailNameAtIndex(index, val);
                     }}
                   />
                   <Spacer type="vertical" size={24} />
@@ -256,7 +264,9 @@ const Home: NextPage = () => {
             {[0, 1, 2, 3, 4].map((index) => {
               return (
                 <div key={index}>
-                  <div className={styles.subtitle}>{`Detail ${index + 1}`}</div>
+                  <div className={styles.subtitle}>{`${
+                    newMethod?.details[index]?.name
+                  }`}</div>
                   {[0, 1, 2, 3, 4].map((makroIndex) => {
                     return (
                       <div key={guid()}>
