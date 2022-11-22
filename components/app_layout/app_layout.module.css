@@ -1,4 +1,4 @@
-.wrapper {
+.all_wrap {
   height: 100vh;
   display: flex;
 }
@@ -12,89 +12,22 @@
   width: 100px;
 }
 
-.sidebar {
-  width: 240px;
-  background-color: white;
-  box-sizing: border-box;
-  padding: 32px 0;
-}
-
-.profile {
-  margin: 16px 0 32px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.profile_picture {
-  height: 80px;
-  width: 80px;
-  background-size: cover;
-  border-radius: 100px;
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/ae/Michael_Jordan_in_2014.jpg);
-}
-
-.name {
-  font-size: 16px;
-  font-weight: 400;
-  margin: 16px 0 4px 0;
-}
-
-.sub_name {
-  font-size: 12px;
-  font-weight: 300;
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  line-height: 20px;
-  box-sizing: border-box;
-  padding: 16px 32px;
-  transition: 0.2s ease-in-out;
-  cursor: pointer;
-  color: #acaba8;
-}
-
-.link:hover {
-  background-color: #f8f7f5;
-  transition: 0.2s ease-in-out;
-}
-
-.link svg {
-  margin-bottom: 3px;
-  margin-right: 12px;
-  height: 18px;
-  width: 18px;
-}
-
-.link svg path {
-  fill: #acaba8;
-}
-
-.link_selected {
-  color: #21262c;
-}
-
-.link_selected svg path {
-  fill: #21262c;
-}
-
 .content {
-  width: calc(100% - 240px);
+  width: 100%;
+  max-width: 1378px;
+  margin: 0 auto;
   box-sizing: border-box;
   height: 100vh;
-  overflow-y: scroll;
-  padding: 85px 48px 32px 48px;
+  overflow: hidden;
+  padding: 100px 48px 32px 48px;
 }
 
 .back {
   font-size: 12px;
   font-weight: 300;
   display: flex;
+  margin: 0 24px 16px 24px;
   align-items: center;
-  margin-bottom: 16px;
   cursor: pointer;
 }
 .back:hover {
@@ -109,7 +42,10 @@
 
 .top_row {
   display: flex;
+  padding-bottom: 10px;
   align-items: center;
+  margin: 0 24px;
+  border-bottom: 1px solid #ede9e4;
   justify-content: space-between;
 }
 
@@ -117,14 +53,10 @@
   font-size: 32px;
 }
 
-.subheading {
-  font-size: 16px;
-  margin-top: 16px;
-  font-weight: 300;
-}
-
-.section_content{
+.section_content {
+  height: calc(100vh - 194px);
+  overflow-y: scroll;
+  overflow-x: visible;
   box-sizing: border-box;
-  margin-top: 48px;
-  max-width: 700px;
+  margin-top: 20px;
 }

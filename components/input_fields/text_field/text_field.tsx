@@ -55,6 +55,9 @@ const TextField = forwardRef((props: TextFieldArguments, ref) => {
     clear() {
       setInput("");
     },
+    updateInput(s: string) {
+      setInput(s);
+    },
   }));
 
   useEffect(() => {

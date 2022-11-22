@@ -9,6 +9,7 @@ export { ActionButton };
 export const buttonStyle = {
   primary: "primary",
   secondary: "secondary",
+  tertiary: "tertiary",
   white: "white",
 };
 
@@ -71,8 +72,8 @@ function ActionButton({
     " " +
     getClassNameExtensionForType();
 
-  let w = width !== null ? width : "100%";
-  let h = height !== null ? height : "55px";
+  let w = width !== null ? width : "";
+  let h = height !== null ? height : "";
   let f = fontSize !== null ? fontSize + "px" : "16px";
 
   let spinner;

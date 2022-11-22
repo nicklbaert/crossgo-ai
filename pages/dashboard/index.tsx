@@ -1,11 +1,15 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import { AppLayout } from "../../components/app_layout/app_layout";
-import { ActionButton } from "../../components/buttons/ActionButton";
+import {
+  ActionButton,
+  buttonStyle,
+} from "../../components/buttons/ActionButton";
 import { BasicInputField } from "../../components/input_fields/basic/input_field";
 import { Result } from "../../components/input_fields/basic_dropdown/basic_dropdown";
 import { method_presets } from "../../components/input_fields/default_values";
 import { SearchableDropdown } from "../../components/input_fields/search_dropdown/search_dropdown";
+import ProtectedRoute from "../../components/ProtectedRoute";
 import { Spacer } from "../../components/spacer/Spacers";
 import { guid } from "../../helpers/util";
 import styles from "../../styles/Dashboard.module.css";
@@ -89,7 +93,7 @@ const Home: NextPage = () => {
                   data-name="Path 28"
                   d="M-4395.179-477.675a1.5,1.5,0,0,1,0-2.122l4.821-4.821H-4401.5a1.5,1.5,0,0,1-1.5-1.5,1.5,1.5,0,0,1,1.5-1.5h11.143l-4.822-4.821a1.5,1.5,0,0,1,0-2.122,1.5,1.5,0,0,1,2.122,0l7.383,7.381a1.5,1.5,0,0,1,.273.377l0,0,.012.025.007.014.007.016.011.024,0,.006a1.5,1.5,0,0,1,.123.6,1.5,1.5,0,0,1-.124.6v0l-.013.029,0,.008-.011.023-.006.013-.009.018-.009.017-.007.013-.011.021-.006.01-.013.022,0,.008-.015.023,0,.007-.016.024,0,.006-.017.024,0,.006-.017.023,0,.006-.017.022-.006.009-.016.02-.008.01-.015.018-.011.013-.013.015-.016.017-.009.01-.023.024,0,0-7.383,7.383a1.5,1.5,0,0,1-1.061.439A1.5,1.5,0,0,1-4395.179-477.675Z"
                   transform="translate(4403 495)"
-                  fill="#8133ff"
+                  fill="#D47721"
                 />
               </svg>
             </div>
@@ -106,7 +110,7 @@ const Home: NextPage = () => {
                   data-name="Path 28"
                   d="M-4395.179-477.675a1.5,1.5,0,0,1,0-2.122l4.821-4.821H-4401.5a1.5,1.5,0,0,1-1.5-1.5,1.5,1.5,0,0,1,1.5-1.5h11.143l-4.822-4.821a1.5,1.5,0,0,1,0-2.122,1.5,1.5,0,0,1,2.122,0l7.383,7.381a1.5,1.5,0,0,1,.273.377l0,0,.012.025.007.014.007.016.011.024,0,.006a1.5,1.5,0,0,1,.123.6,1.5,1.5,0,0,1-.124.6v0l-.013.029,0,.008-.011.023-.006.013-.009.018-.009.017-.007.013-.011.021-.006.01-.013.022,0,.008-.015.023,0,.007-.016.024,0,.006-.017.024,0,.006-.017.023,0,.006-.017.022-.006.009-.016.02-.008.01-.015.018-.011.013-.013.015-.016.017-.009.01-.023.024,0,0-7.383,7.383a1.5,1.5,0,0,1-1.061.439A1.5,1.5,0,0,1-4395.179-477.675Z"
                   transform="translate(4403 495)"
-                  fill="#8133ff"
+                  fill="#D47721"
                 />
               </svg>
             </div>
@@ -264,9 +268,9 @@ const Home: NextPage = () => {
             {[0, 1, 2, 3, 4].map((index) => {
               return (
                 <div key={index}>
-                  <div className={styles.subtitle}>{`${
-                    newMethod?.details[index]?.name
-                  }`}</div>
+                  <div
+                    className={styles.subtitle}
+                  >{`${newMethod?.details[index]?.name}`}</div>
                   {[0, 1, 2, 3, 4].map((makroIndex) => {
                     return (
                       <div key={guid()}>
@@ -307,7 +311,7 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.edit_button}>Bearbeiten</div>
+              <ActionButton title="Bearbeiten" style={buttonStyle.tertiary} />
             </div>
             <div className={styles.method}>
               <div className={styles.method_left}>
@@ -319,7 +323,7 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.edit_button}>Bearbeiten</div>
+              <ActionButton title="Bearbeiten" style={buttonStyle.tertiary} />
             </div>
           </div>
         );
@@ -327,14 +331,16 @@ const Home: NextPage = () => {
   }
 
   return (
-    <AppLayout
-      title={getTitle()}
-      subtitle={getSubTitle()}
-      backTitle={getBack()}
-      onBack={onBack}
-      headingButton={getHeadingButton()}
-      content={getContent()}
-    />
+    <ProtectedRoute>
+      <AppLayout
+        title={getTitle()}
+        subtitle={getSubTitle()}
+        backTitle={getBack()}
+        onBack={onBack}
+        headingButton={getHeadingButton()}
+        content={getContent()}
+      />
+    </ProtectedRoute>
   );
 };
 

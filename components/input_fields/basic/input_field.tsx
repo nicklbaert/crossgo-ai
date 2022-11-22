@@ -54,6 +54,9 @@ const BasicInputField = forwardRef((props: BasicInputFieldArguments, ref) => {
     clear() {
       setInput("");
     },
+    updateInput(s: string) {
+      setInput(s);
+    },
   }));
 
   useEffect(() => {
@@ -67,7 +70,7 @@ const BasicInputField = forwardRef((props: BasicInputFieldArguments, ref) => {
         }
       });
       //listen for tab button pressed
-      el.addEventListener("keydown", (e:any) => {
+      el.addEventListener("keydown", (e: any) => {
         if (e.key === "Tab") {
           setFocus(false);
           if (onUnfocus) onUnfocus();
@@ -80,7 +83,7 @@ const BasicInputField = forwardRef((props: BasicInputFieldArguments, ref) => {
         el.removeEventListener("focus", () => {
           setFocus(true);
         });
-        el.removeEventListener("keydown", (e:any) => {
+        el.removeEventListener("keydown", (e: any) => {
           if (e.key === "Tab") {
             setFocus(false);
           }

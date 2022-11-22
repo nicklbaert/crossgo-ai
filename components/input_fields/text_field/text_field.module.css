@@ -5,7 +5,7 @@
 
 .form_field textarea {
   width: 100%;
-  background-color: #f4f4f3;
+  background-color: transparent;
   box-sizing: border-box;
   display: block;
   height: 60px;
@@ -13,10 +13,10 @@
   padding: 26px 16px 0px 16px;
   outline: none;
   border-radius: 8px;
-  font-family: "Cycle";
   color: #212226;
-  font-weight: 400;
-  border: 2px solid transparent;
+  line-height: 1.5;
+  font-weight: 300;
+  border: 2px solid #c4beb1;
   transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
   min-height: 50px;
   max-height: 400px;
@@ -28,7 +28,6 @@
 .focused textarea {
   transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
   border: 2px solid #1d1a0e;
-  background-color: white;
 }
 
 .has_icon textarea {

@@ -1,41 +1,49 @@
 .button {
   margin: 0;
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 100px;
   font-size: 16px;
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   outline: inherit;
   border: none;
-  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+  transition: background-color 0.1s ease-in, color 0.1s ease-in;
   text-decoration: none;
   word-wrap: none;
   overflow-wrap: initial;
-  border-radius: 6px;
   -webkit-appearance: none;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .primary {
-  width: 100%;
-  color: #ffffff;
-  background-color: #1d1a0e;
+  background-color: #341b15;
+  color: #fff;
 }
 
 .primary:hover {
-  background-color: #282725;
+  background-color: #4a2921;
 }
 
 .secondary {
-  background-color: #f4f4f3;
+  background-color: transparent;
+  border: none;
+  color: #341b15;
 }
 
 .secondary:hover {
-  filter: brightness(90%);
+  background-color: #F4F1ED;
+}
+
+.tertiary {
+  background-color: #F4F1ED;
+  color: #D47721;
 }
 
 .white {

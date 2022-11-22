@@ -6,7 +6,7 @@ a {
   -webkit-overflow-scrolling: touch;
   margin: 0;
   padding: 0;
-  color: #21262C;
+  color: #341B15;
   text-align: left;
   font-family: azo-sans-web, sans-serif;
   user-select: none;
@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  background-color: #f8f7f5;
+  background-color: #f9faf5;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -143,4 +143,8 @@ textarea {
   padding-right: 48px;
   font-size: 20px;
   font-weight: 500;
+}
+
+.heading {
+  font-size: 32px;
 }

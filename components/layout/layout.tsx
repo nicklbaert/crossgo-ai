@@ -3,6 +3,7 @@ import router, { useRouter } from "next/router";
 import styles from "./layout.module.css";
 import PropTypes from "prop-types";
 import Head from "next/head";
+import { NavBar } from "../navbar/navbar";
 
 export { Layout };
 
@@ -29,6 +30,7 @@ function Layout({ content, currentPageName, ...props }: LayoutArgs) {
 
   return (
     <div className={styles.all_wrap}>
+      <NavBar />
       <div className={styles.page_wide}>
         <div id="content">{content}</div>
       </div>
