@@ -7,15 +7,26 @@ import { useRouter } from "next/router";
 import { ActionButton, buttonStyle } from "../buttons/ActionButton";
 import { useAuth } from "../../context/authUserContext";
 import { FittedImage } from "../cover_image/fitted_image";
+import { Spacer } from "../spacer/Spacers";
 
 export { NavBar };
 
-function NavBar({ isSticky, app, ...props }: any) {
+function NavBar({
+  isSticky,
+  app,
+  makeSwitch,
+  social,
+  ...props
+}: {
+  isSticky?: boolean;
+  app?: boolean;
+  makeSwitch?: () => void;
+  social?: boolean;
+}) {
   const router = useRouter();
 
   const { user, logOut } = useAuth();
 
-  const [userLoading, setUserLoading] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -50,7 +61,6 @@ function NavBar({ isSticky, app, ...props }: any) {
               className={styles.nav_linko + " " + styles.logo}
             >
               <svg
-                className={styles.logo}
                 xmlns="http://www.w3.org/2000/svg"
                 width="151.056"
                 height="34.331"
@@ -64,6 +74,7 @@ function NavBar({ isSticky, app, ...props }: any) {
                   fill="#21262c"
                 />
               </svg>
+              {social && <span>Social</span>}
             </NavLink>
           </div>
         </div>
@@ -91,6 +102,25 @@ function NavBar({ isSticky, app, ...props }: any) {
             </div>
           </div>
           <div className={styles.links_right}>
+            {!social && (
+              <ActionButton
+                title="Zu Social wechseln"
+                onClick={() => {
+                  if (makeSwitch) makeSwitch();
+                }}
+                style={buttonStyle.tertiary}
+              />
+            )}
+            {social && (
+              <ActionButton
+                title="Zum Tool wechseln"
+                onClick={() => {
+                  if (makeSwitch) makeSwitch();
+                }}
+                style={buttonStyle.tertiary}
+              />
+            )}
+            <Spacer type="horizontal" size={16} />
             {!user?.uid && (
               <ActionButton
                 onClick={() => {

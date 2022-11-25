@@ -14,6 +14,8 @@ AppLayout.propTypes = {
   subtitle: PropTypes.string,
   headingButton: PropTypes.any,
   onBack: PropTypes.func,
+  makeSwitch: PropTypes.func,
+  social: PropTypes.bool,
 };
 
 type AppLayoutArgs = {
@@ -23,6 +25,8 @@ type AppLayoutArgs = {
   subtitle?: string;
   headingButton?: any;
   onBack?: () => void;
+  makeSwitch?: () => void;
+  social?: boolean;
 };
 
 function AppLayout({
@@ -32,6 +36,8 @@ function AppLayout({
   subtitle,
   headingButton,
   onBack,
+  makeSwitch,
+  social,
   ...props
 }: AppLayoutArgs) {
   const router = useRouter();
@@ -48,7 +54,7 @@ function AppLayout({
 
   return (
     <div className={styles.all_wrap}>
-      <NavBar app={true} />
+      <NavBar makeSwitch={makeSwitch} social={social} app={true} />
       <div className={styles.content}>
         {backTitle && (
           <div onClick={onBack} className={styles.back}>

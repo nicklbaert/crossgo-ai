@@ -8,22 +8,69 @@ import { ActionButton } from "../components/buttons/ActionButton";
 import { BasicInputField } from "../components/input_fields/basic/input_field";
 import { Layout } from "../components/layout/layout";
 import { Spacer } from "../components/spacer/Spacers";
+import { getFirebaseErrorTranslation } from "../config/firebase_errors";
 import { isUserComplete, useAuth, UserType } from "../context/authUserContext";
 import { createUser } from "../helpers/api_wrapper";
 import styles from "../styles/Login.module.css";
 
-const LoginPage: NextPage = () => {
+const LoginPage: NextPage = ({
+  makeSwitch,
+  social,
+}: {
+  makeSwitch?: () => void;
+  social?: boolean;
+}) => {
   let router = useRouter();
 
   let redirect = router.query.redirect as string;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [error, setError] = useState(null as string | null);
+
+  const [loading, setLoading] = useState(false);
 
   const { signUp, logIn, user } = useAuth();
 
   const onSubmit = async () => {
+    setError(null);
+    setLoading(true);
     try {
+      if (
+        !email ||
+        email === "" ||
+        !password ||
+        password === "" ||
+        !passwordConfirm ||
+        passwordConfirm === ""
+      ) {
+        setError("Bitte fülle alle Felder aus.");
+        setLoading(false);
+        return;
+      }
+
+      //Check if email really is an email
+      if (!email.includes("@")) {
+        setError("Bitte gib eine gültige E-Mail Adresse ein.");
+        setLoading(false);
+        return;
+      }
+
+      //Check if password is long enough
+      if (password.length < 6) {
+        setLoading(false);
+        setError("Das Passwort muss mindestens 6 Zeichen lang sein.");
+        return;
+      }
+
+      //Check if passwords match
+      if (password !== passwordConfirm) {
+        setLoading(false);
+        setError("Die Passwörter stimmen nicht überein.");
+        return;
+      }
+
       let user: UserCredential = await signUp(email, password);
       await createUser({
         email,
@@ -32,8 +79,16 @@ const LoginPage: NextPage = () => {
 
       await logIn(email, password);
     } catch (error: any) {
-      console.log(error.message);
+      let e = getFirebaseErrorTranslation(error.code);
+      setError(
+        e.toClient !== "default"
+          ? e.toClient
+          : "Etwas ist schief gelaufen. Bitte versuche es erneut."
+      );
+      console.log(e.toDev);
     }
+
+    setLoading(false);
   };
 
   function pushAndClearStack(route: string) {
@@ -60,6 +115,8 @@ const LoginPage: NextPage = () => {
 
   return (
     <Layout
+      makeSwitch={makeSwitch}
+      social={social}
       content={
         <div className={styles.wrapper + " page"}>
           <div className={styles.bg}>
@@ -91,14 +148,21 @@ const LoginPage: NextPage = () => {
                 isPassword={true}
                 label="Passwort bestätigen"
                 onChange={(s: string) => {
-                  setPassword(s);
+                  setPasswordConfirm(s);
                 }}
               />
               <Spacer type="vertical" size={32} />
+              {error && (
+                <div className={styles.error}>
+                  {error}
+                  <Spacer type="vertical" size={32} />
+                </div>
+              )}
               <div className={styles.row}>
                 <ActionButton
                   height={"50px"}
                   width={"100%"}
+                  loading={loading}
                   onClick={onSubmit}
                   title="Einloggen"
                 />

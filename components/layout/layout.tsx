@@ -10,14 +10,24 @@ export { Layout };
 Layout.propTypes = {
   content: PropTypes.node.isRequired,
   currentPageName: PropTypes.string,
+  makeSwitch: PropTypes.func,
+  social: PropTypes.bool,
 };
 
 type LayoutArgs = {
   content: any;
   currentPageName?: string | null;
+  makeSwitch?: () => void;
+  social?: boolean;
 };
 
-function Layout({ content, currentPageName, ...props }: LayoutArgs) {
+function Layout({
+  content,
+  currentPageName,
+  makeSwitch,
+  social,
+  ...props
+}: LayoutArgs) {
   const router = useRouter();
 
   useEffect(() => {
@@ -30,7 +40,7 @@ function Layout({ content, currentPageName, ...props }: LayoutArgs) {
 
   return (
     <div className={styles.all_wrap}>
-      <NavBar />
+      <NavBar makeSwitch={makeSwitch} social={social} />
       <div className={styles.page_wide}>
         <div id="content">{content}</div>
       </div>

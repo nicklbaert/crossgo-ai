@@ -13,7 +13,7 @@ const firebaseErrors: Record<string, TranslateObject> = {
         toDev: "The claims payload provided to setCustomUserClaims() exceeds the maximum allowed size of 1000 bytes.",
         toClient: "default"
     },
-    "auth/email-already-exists": {
+    "auth/email-already-in-use": {
         toDev: "The provided email is already in use by an existing user. Each user must have a unique email.",
         toClient: "Diese E-Mail-Adresse ist bereits registriert."
     },

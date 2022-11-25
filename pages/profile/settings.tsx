@@ -25,7 +25,13 @@ import { useAuth, UserType } from "../../context/authUserContext";
 import { updateUser } from "../../helpers/api_wrapper";
 import styles from "../../styles/profile/settings.module.css";
 
-const ProfileSettings: NextPage = () => {
+const ProfileSettings: NextPage = ({
+  makeSwitch,
+  social,
+}: {
+  makeSwitch?: () => void;
+  social?: boolean;
+}) => {
   let router = useRouter();
 
   const { user, setUser, logOut } = useAuth();
@@ -35,8 +41,9 @@ const ProfileSettings: NextPage = () => {
   const [bio, setBio] = useState(null as string | null);
   const bio_ref = useRef(null as any);
   const [avatar, setAvatar] = useState(null as string | null);
-  const [header, setHeader] = useState(null as string | null);
+
   const [avatarLoading, setAvatarLoading] = useState(false);
+  const [header, setHeader] = useState(null as string | null);
   const [headerLoading, setHeaderLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
 
@@ -290,6 +297,8 @@ const ProfileSettings: NextPage = () => {
       <AppLayout
         backTitle="Zurück"
         title="Profil"
+        makeSwitch={makeSwitch}
+        social={social}
         onBack={() => {
           router.push("/dashboard");
         }}

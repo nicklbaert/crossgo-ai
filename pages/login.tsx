@@ -12,7 +12,13 @@ import { getFirebaseErrorTranslation } from "../config/firebase_errors";
 import { isUserComplete, useAuth } from "../context/authUserContext";
 import styles from "../styles/Login.module.css";
 
-const LoginPage: NextPage = () => {
+const LoginPage: NextPage = ({
+  makeSwitch,
+  social,
+}: {
+  makeSwitch?: () => void;
+  social?: boolean;
+}) => {
   let router = useRouter();
 
   let redirect = router.query.redirect as string;
@@ -33,7 +39,11 @@ const LoginPage: NextPage = () => {
       //router.push("/dashboard");
     } catch (error: any) {
       let e = getFirebaseErrorTranslation(error.code);
-      setError(e.toClient !== "default" ? e.toClient : 'Etwas ist schief gelaufen. Bitte versuche es erneut.');
+      setError(
+        e.toClient !== "default"
+          ? e.toClient
+          : "Etwas ist schief gelaufen. Bitte versuche es erneut."
+      );
       console.log(e.toDev);
     }
     setLoading(false);
@@ -63,6 +73,8 @@ const LoginPage: NextPage = () => {
 
   return (
     <Layout
+      makeSwitch={makeSwitch}
+      social={social}
       content={
         <div className={styles.wrapper + " page"}>
           <div className={styles.bg}>

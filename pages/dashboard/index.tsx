@@ -14,7 +14,13 @@ import { Spacer } from "../../components/spacer/Spacers";
 import { guid } from "../../helpers/util";
 import styles from "../../styles/Dashboard.module.css";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({
+  makeSwitch,
+  social,
+}: {
+  makeSwitch?: () => void;
+  social?: boolean;
+}) => {
   const [showButtonOptions, setShowButtonOptions] = useState(false);
 
   const dashboardTabs = {
@@ -335,6 +341,8 @@ const Home: NextPage = () => {
       <AppLayout
         title={getTitle()}
         subtitle={getSubTitle()}
+        makeSwitch={makeSwitch}
+        social={social}
         backTitle={getBack()}
         onBack={onBack}
         headingButton={getHeadingButton()}
