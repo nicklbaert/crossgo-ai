@@ -10,7 +10,7 @@ import { Layout } from "../components/layout/layout";
 import { Spacer } from "../components/spacer/Spacers";
 import { getFirebaseErrorTranslation } from "../config/firebase_errors";
 import { isUserComplete, useAuth, UserType } from "../context/authUserContext";
-import { createUser } from "../helpers/api_wrapper";
+import { createUser } from "../helpers/user";
 import styles from "../styles/Login.module.css";
 
 const LoginPage: NextPage = ({

@@ -1,0 +1,152 @@
+.wrapper {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-sizing: border-box;
+  padding: 24px;
+  width: 400px;
+  border-radius: 16px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #806e6a;
+}
+
+.content {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content_left {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.name {
+  line-height: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  width: calc(100% - 54px);
+  white-space: wrap;
+}
+
+.color_circle {
+  margin-right: 16px;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.content_right {
+  position: relative;
+}
+
+.content_right svg {
+  height: 16px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 16px;
+}
+
+.menu {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  transform: scale(0);
+  position: absolute;
+  top: 20px;
+  right: 0;
+  transition: 0.2s cubic-bezier(0.52, -0.32, 0.27, 1.29);
+}
+
+.visible {
+  transition: 0.2s cubic-bezier(0.52, -0.32, 0.27, 1.29);
+  transform: scale(1);
+}
+
+.menu_item {
+  height: 45px;
+  font-size: 14px;
+  line-height: 45px;
+  min-width: 150px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.2s ease-in-out;
+}
+
+.menu_item:hover {
+  background-color: #f5f5f5;
+  transition: 0.2s ease-in-out;
+}
+
+/*first menu item border radius*/
+.menu_item:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/*last menu item border radius*/
+.menu_item:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.menu_item:not(:last-child) {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.delete {
+  color: #ea436a;
+}
+
+.menu_item_icon {
+  margin-bottom: 3px;
+  margin-right: 8px;
+}
+
+.menu_item_icon svg {
+  height: 16px;
+  width: 16px;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.delete .menu_item_icon svg path {
+  fill: #ea436a;
+}
+
+.color_menu {
+  left: -10px;
+  width: fit-content;
+  right: unset;
+  top: 30px;
+  padding: 16px;
+  display: flex;
+}
+
+.color_option {
+  height: 23px;
+  width: 23px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  border: 2px solid transparent;
+}
+
+.color_option:hover {
+  border: 2px solid #341b15;
+  transition: 0.2s ease-in-out;
+}
+
+.color_option:not(:last-child) {
+  margin-right: 8px;
+}

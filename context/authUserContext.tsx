@@ -7,18 +7,8 @@ import {
   UserCredential,
 } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { getUser } from "../helpers/api_wrapper";
-
-export interface UserType {
-  email: string | null;
-  uid: string | null;
-  avatar: string | null;
-  displayName: string | null;
-  bio: string | null;
-  header: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
-}
+import { UserType } from "../helpers/types";
+import { getUser } from "../helpers/api/user";
 
 export type LoginResult = {
   success: boolean;
@@ -39,7 +29,7 @@ export const AuthContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [user, setUser] = useState<UserType>({
+  const emptyUser: UserType = {
     email: null,
     uid: null,
     avatar: null,
@@ -48,38 +38,27 @@ export const AuthContextProvider = ({
     header: null,
     createdAt: null,
     updatedAt: null,
-  });
+    schwerpunkte: [],
+  };
+
+  const [user, setUser] = useState<UserType>(emptyUser);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        getUser(user.uid).then((res) => {
+        getUser(user.uid).then((res: UserType) => {
           if (res == null) {
             console.log(
               "authUserContext.tsx: user logged in but doc not found"
             );
-            setUser({
-              email: null,
-              uid: null,
-              avatar: null,
-              displayName: null,
-              bio: null,
-              header: null,
-              createdAt: null,
-              updatedAt: null,
-            });
+            setUser(emptyUser);
           } else {
             console.log("authUserContext.tsx: user logged in and doc found");
             setUser({
+              ...res,
               email: user.email,
               uid: user.uid,
-              avatar: res.avatar,
-              displayName: res.displayName,
-              bio: res.bio,
-              header: res.header,
-              createdAt: res.createdAt,
-              updatedAt: res.updatedAt,
             });
           }
           setLoading(false);
@@ -88,16 +67,7 @@ export const AuthContextProvider = ({
         console.log("User is signed in.");
         console.log(user);
       } else {
-        setUser({
-          email: null,
-          uid: null,
-          avatar: null,
-          displayName: null,
-          bio: null,
-          header: null,
-          createdAt: null,
-          updatedAt: null,
-        });
+        setUser(emptyUser);
       }
     });
     setLoading(false);
@@ -114,16 +84,7 @@ export const AuthContextProvider = ({
   };
 
   const logOut = async () => {
-    setUser({
-      email: null,
-      uid: null,
-      avatar: null,
-      displayName: null,
-      bio: null,
-      header: null,
-      createdAt: null,
-      updatedAt: null,
-    });
+    setUser(emptyUser);
     await signOut(auth);
   };
 

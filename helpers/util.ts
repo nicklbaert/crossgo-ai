@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export { generateUID, censorAccountNumber, getTimeAgo, useOutsideAlerter, padWithZero, uploadToClient, calculateCut, getFormattedDate, file2Base64, getUIValuesFromListingStatus, getStringFromReservationStatus, delay, tryParseInt, constructQueryFromObject, abbreviate, randstr, guid, convertListToQueryListString };
+export { prepStringForSearch, generateUID, censorAccountNumber, getTimeAgo, useOutsideAlerter, padWithZero, uploadToClient, calculateCut, getFormattedDate, file2Base64, getUIValuesFromListingStatus, getStringFromReservationStatus, delay, tryParseInt, constructQueryFromObject, abbreviate, randstr, guid, convertListToQueryListString };
 
 ///[object] a regular object
 ///[prefix] a prefix path without the ?
@@ -8,7 +8,7 @@ function constructQueryFromObject(object: any, prefix: string) {
 
   let query: string = prefix + '?';
 
-  Object.keys(object).forEach((key:string) => {
+  Object.keys(object).forEach((key: string) => {
     query = query + `${key}=${object[key]}&`;
   });
 
@@ -17,7 +17,7 @@ function constructQueryFromObject(object: any, prefix: string) {
   return query;
 }
 
-function generateUID(length:number) {
+function generateUID(length: number) {
   var result = '';
   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   var charactersLength = characters.length;
@@ -27,6 +27,18 @@ function generateUID(length:number) {
   }
   return result;
 }
+
+function prepStringForSearch(str: string) {
+  //Remove all non-alphanumeric characters and spaces
+  //Convert to lowercase
+  //Remove all spaces
+  //all step by step and console.log to see what happens
+  let s = str.replaceAll(/[^a-zA-Z0-9 ]/g, "");
+  s = s.toLowerCase();
+  s = s.replaceAll(/\s/g, "");
+  return s;
+}
+
 
 type ListingStatusUI = {
   color: string;
@@ -42,7 +54,7 @@ function censorAccountNumber(num: string) {
 }
 
 
-const uploadToClient = (event:any, updateFunction:any) => {
+const uploadToClient = (event: any, updateFunction: any) => {
   if (event.target.files && event.target.files[0]) {
     const i = event.target.files[0];
     updateFunction(URL.createObjectURL(i));
@@ -160,7 +172,7 @@ function getStringFromReservationStatus(status: number) {
   }
 }
 
-function delay(time:any) {
+function delay(time: any) {
   return new Promise(resolve => setTimeout(resolve, time));
 }
 
@@ -178,7 +190,7 @@ function tryParseInt(str: string): number | undefined {
   }
 }
 
-function randstr(prefix:string) {
+function randstr(prefix: string) {
   return Math.random()
     .toString(36)
     .replace("0.", prefix || "");

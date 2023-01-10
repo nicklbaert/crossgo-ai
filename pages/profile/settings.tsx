@@ -21,8 +21,9 @@ import { TextField } from "../../components/input_fields/text_field/text_field";
 import { Layout } from "../../components/layout/layout";
 import ProtectedRoute from "../../components/ProtectedRoute";
 import { Spacer } from "../../components/spacer/Spacers";
-import { useAuth, UserType } from "../../context/authUserContext";
-import { updateUser } from "../../helpers/api_wrapper";
+import { useAuth } from "../../context/authUserContext";
+import { updateUser } from "../../helpers/api/user";
+import { UserType } from "../../helpers/types";
 import styles from "../../styles/profile/settings.module.css";
 
 const ProfileSettings: NextPage = ({

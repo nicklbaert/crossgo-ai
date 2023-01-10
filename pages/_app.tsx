@@ -4,6 +4,7 @@ import { SWRConfig } from "swr";
 import { authFetchJSON } from "../lib/apiHelper";
 import { AuthContextProvider } from "../context/authUserContext";
 import { useState } from "react";
+import { PopupContextProvider } from "../context/popupContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   let [social, setSocial] = useState(false);
@@ -14,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <AuthContextProvider>
-      <Component {...pageProps} makeSwitch={makeSwitch} social={social} />
+      <PopupContextProvider>
+        <Component {...pageProps} makeSwitch={makeSwitch} social={social} />
+      </PopupContextProvider>
     </AuthContextProvider>
   );
 }

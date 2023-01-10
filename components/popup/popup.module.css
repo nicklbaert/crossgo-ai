@@ -1,0 +1,122 @@
+.popup_wrapper {
+  position: fixed;
+  z-index: 10010;
+  top: 0;
+  left: 0px;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  right: 0px;
+  overflow-y: scroll;
+  margin: 0 auto;
+  justify-content: center;
+  display: none;
+  transform: scale(0);
+}
+
+.popup_wrapper_pending {
+  display: flex;
+}
+
+.popup_wrapper_open {
+  transform: scale(1);
+  transition: 0.1s cubic-bezier(0.52, -0.32, 0.27, 1.29);
+  overflow-y: scroll;
+}
+
+.popup_wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.overlay {
+  opacity: 0;
+  position: fixed;
+  z-index: 10010;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  visibility: hidden;
+  transition: 0.2s ease-out;
+}
+.overlay_open {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.2s ease-in;
+}
+
+.popup {
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 100000;
+  width: fit-content;
+  justify-content: flex-start;
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: fit-content;
+  max-height: 100vh;
+  min-width: 500px;
+  max-width: 600px;
+}
+
+.popup_header {
+  box-sizing: border-box;
+  padding: 24px 24px;
+  border-bottom: 1px solid #ede9e4;
+}
+
+.popup_title {
+  font-size: 22px;
+}
+
+.popup_subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #806e6a;
+}
+
+.content {
+}
+
+.close_button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  z-index: 10000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close_button svg {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .popup {
+    border-radius: 0px;
+    top: 0;
+    right: 0;
+    max-width: unset;
+    left: 0;
+    bottom: 0;
+    height: fit-content;
+    margin: 0;
+    width: 100%;
+    padding: 32px;
+    min-height: 100vh;
+  }
+}

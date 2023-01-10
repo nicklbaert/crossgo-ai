@@ -102,7 +102,7 @@ function NavBar({
             </div>
           </div>
           <div className={styles.links_right}>
-            {!social && (
+            {/* {!social && (
               <ActionButton
                 title="Zu Social wechseln"
                 onClick={() => {
@@ -119,7 +119,7 @@ function NavBar({
                 }}
                 style={buttonStyle.tertiary}
               />
-            )}
+            )} */}
             <Spacer type="horizontal" size={16} />
             {!user?.uid && (
               <ActionButton
