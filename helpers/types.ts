@@ -7,7 +7,7 @@ export interface UserType {
     header: string | null;
     createdAt: string | null;
     updatedAt: string | null;
-    schwerpunkte: UserSchwerpunkt[];
+    schwerpunkte: UserSchwerpunkt[] | null;
 }
 
 export type UserSchwerpunkt = {

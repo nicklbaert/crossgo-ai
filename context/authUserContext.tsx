@@ -47,7 +47,7 @@ export const AuthContextProvider = ({
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        getUser(user.uid).then((res: UserType) => {
+        getUser(user.uid).then((res: UserType | null) => {
           if (res == null) {
             console.log(
               "authUserContext.tsx: user logged in but doc not found"

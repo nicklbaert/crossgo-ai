@@ -9,8 +9,9 @@ import { BasicInputField } from "../components/input_fields/basic/input_field";
 import { Layout } from "../components/layout/layout";
 import { Spacer } from "../components/spacer/Spacers";
 import { getFirebaseErrorTranslation } from "../config/firebase_errors";
-import { isUserComplete, useAuth, UserType } from "../context/authUserContext";
-import { createUser } from "../helpers/user";
+import { isUserComplete, useAuth } from "../context/authUserContext";
+import { createUser } from "../helpers/api/user";
+import { UserType } from "../helpers/types";
 import styles from "../styles/Login.module.css";
 
 const LoginPage: NextPage = ({
