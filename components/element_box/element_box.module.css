@@ -150,3 +150,7 @@
 .color_option:not(:last-child) {
   margin-right: 8px;
 }
+
+.icon{
+  cursor: pointer;
+}

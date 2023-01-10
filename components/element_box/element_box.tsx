@@ -49,7 +49,8 @@ function ElementBox({
         </div>
         <div className={styles.content_right}>
           <div
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setShowMenu(!showMenu);
             }}
             className={styles.icon}

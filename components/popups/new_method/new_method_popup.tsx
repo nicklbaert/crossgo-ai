@@ -59,7 +59,7 @@ function NewMethodPopup({
                 ({
                   value: methode,
                   title: methode.name,
-                  subtitle: methode.used_by.length.toString(),
+                  subtitle: (methode.used_by?.length.toString() ?? '0') + ' mal benutzt',
                 } as Result<Methode>)
             );
           }}

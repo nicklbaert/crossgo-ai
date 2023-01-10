@@ -228,7 +228,7 @@ export async function createSubElement(uid: string, element: Methode | Detail | 
         }
     }
 
-    element.used_by = [...element.used_by, uid]
+    element.used_by = element.used_by ? [...element.used_by, uid] : [uid];
 
     return element;
 }

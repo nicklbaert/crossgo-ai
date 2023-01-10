@@ -1,15 +1,15 @@
-import { useRef, useState } from "react";
-import { useAuth } from "../../context/authUserContext";
-import { colorOptions } from "../../helpers/api/content";
+import { useRef, useState } from 'react';
+import { useAuth } from '../../context/authUserContext';
+import { colorOptions } from '../../helpers/api/content';
 import {
   Detail,
   Makroschritt,
   Methode,
   Schwerpunkt,
   UserSchwerpunkt,
-} from "../../helpers/types";
-import { abbreviate, useOutsideAlerter } from "../../helpers/util";
-import styles from "./element_box.module.css";
+} from '../../helpers/types';
+import { abbreviate, useOutsideAlerter } from '../../helpers/util';
+import styles from './element_box.module.css';
 
 export { SchwerpunktBox };
 
@@ -47,7 +47,12 @@ function SchwerpunktBox({
   const [showColorMenu, setShowColorMenu] = useState(false);
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      onClick={() => {
+        onClick();
+      }}
+      className={styles.wrapper}
+    >
       <div className={styles.title}>{title}</div>
       <div className={styles.content}>
         <div className={styles.content_left}>
@@ -58,17 +63,17 @@ function SchwerpunktBox({
               }}
               className={styles.color_circle}
               style={{
-                backgroundColor: color ?? "#806e6a",
+                backgroundColor: color ?? '#806e6a',
               }}
             >
               <div
                 ref={colorWrapperRef}
                 className={
                   styles.menu +
-                  " " +
+                  ' ' +
                   styles.color_menu +
-                  " " +
-                  (showColorMenu ? styles.visible : "")
+                  ' ' +
+                  (showColorMenu ? styles.visible : '')
                 }
               >
                 {colorOptions.map((c, index) => {
@@ -96,7 +101,8 @@ function SchwerpunktBox({
         </div>
         <div className={styles.content_right}>
           <div
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setShowMenu(!showMenu);
             }}
             className={styles.icon}
@@ -118,14 +124,15 @@ function SchwerpunktBox({
           </div>
           <div
             ref={optionsWrapperRef}
-            className={styles.menu + " " + (showMenu ? styles.visible : "")}
+            className={styles.menu + ' ' + (showMenu ? styles.visible : '')}
           >
             <div
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setShowMenu(false);
                 onDelete();
               }}
-              className={styles.menu_item + " " + styles.delete}
+              className={styles.menu_item + ' ' + styles.delete}
             >
               <div className={styles.menu_item_icon}>
                 <svg

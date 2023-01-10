@@ -3,6 +3,7 @@
   box-sizing: border-box;
   padding: 24px;
   width: 400px;
+  cursor: pointer;
   border-radius: 16px;
 }
 
@@ -149,4 +150,8 @@
 
 .color_option:not(:last-child) {
   margin-right: 8px;
+}
+
+.icon{
+  cursor: pointer;
 }

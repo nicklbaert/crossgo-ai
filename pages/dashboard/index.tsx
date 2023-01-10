@@ -59,8 +59,10 @@ const Dashboard: NextPage = ({
           setSchwerpunkte(s);
         }
       });
+    } else {
+      setLoading(false);
     }
-  }, [user]);
+  }, [user, user?.schwerpunkte]);
 
   return (
     <ProtectedRoute>
@@ -117,13 +119,7 @@ const Dashboard: NextPage = ({
             ) : (
               <div className={styles.schwerpunkte}>
                 {schwerpunkte.map((s, index) => (
-                  <div
-                    onClick={() => {
-                      router.push(`/dashboard/${s.id}`);
-                    }}
-                    key={s.id}
-                    className={styles.schwerpunkt}
-                  >
+                  <div key={s.id} className={styles.schwerpunkt}>
                     <SchwerpunktBox
                       element={s}
                       onDelete={() => {
@@ -145,7 +141,9 @@ const Dashboard: NextPage = ({
                         );
                       }}
                       title="Schwerpunkt"
-                      onClick={() => {}}
+                      onClick={() => {
+                        router.push(`/dashboard/${s.id}`);
+                      }}
                     />
                   </div>
                 ))}
