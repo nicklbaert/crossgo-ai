@@ -59,7 +59,7 @@ const LoginPage: NextPage = ({
   useEffect(() => {
     console.log("login user change detected ", user);
     if (user.uid) {
-      if (redirect && redirect !== "/login" && redirect !== "") {
+      if (redirect !== undefined && redirect !== null && redirect !== "/login" && redirect !== "") {
         pushAndClearStack(redirect);
       } else {
         if (!isUserComplete(user)) {

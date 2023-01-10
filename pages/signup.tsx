@@ -1,18 +1,18 @@
-import { UserCredential } from "firebase/auth";
-import type { NextPage } from "next";
-import { Router, useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { mutate } from "swr";
-import { AppLayout } from "../components/app_layout/app_layout";
-import { ActionButton } from "../components/buttons/ActionButton";
-import { BasicInputField } from "../components/input_fields/basic/input_field";
-import { Layout } from "../components/layout/layout";
-import { Spacer } from "../components/spacer/Spacers";
-import { getFirebaseErrorTranslation } from "../config/firebase_errors";
-import { isUserComplete, useAuth } from "../context/authUserContext";
-import { createUser } from "../helpers/api/user";
-import { UserType } from "../helpers/types";
-import styles from "../styles/Login.module.css";
+import { UserCredential } from 'firebase/auth';
+import type { NextPage } from 'next';
+import { Router, useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { mutate } from 'swr';
+import { AppLayout } from '../components/app_layout/app_layout';
+import { ActionButton } from '../components/buttons/ActionButton';
+import { BasicInputField } from '../components/input_fields/basic/input_field';
+import { Layout } from '../components/layout/layout';
+import { Spacer } from '../components/spacer/Spacers';
+import { getFirebaseErrorTranslation } from '../config/firebase_errors';
+import { isUserComplete, useAuth } from '../context/authUserContext';
+import { createUser } from '../helpers/api/user';
+import { UserType } from '../helpers/types';
+import styles from '../styles/Login.module.css';
 
 const LoginPage: NextPage = ({
   makeSwitch,
@@ -25,9 +25,9 @@ const LoginPage: NextPage = ({
 
   let redirect = router.query.redirect as string;
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [error, setError] = useState(null as string | null);
 
   const [loading, setLoading] = useState(false);
@@ -40,20 +40,20 @@ const LoginPage: NextPage = ({
     try {
       if (
         !email ||
-        email === "" ||
+        email === '' ||
         !password ||
-        password === "" ||
+        password === '' ||
         !passwordConfirm ||
-        passwordConfirm === ""
+        passwordConfirm === ''
       ) {
-        setError("Bitte fülle alle Felder aus.");
+        setError('Bitte fülle alle Felder aus.');
         setLoading(false);
         return;
       }
 
       //Check if email really is an email
-      if (!email.includes("@")) {
-        setError("Bitte gib eine gültige E-Mail Adresse ein.");
+      if (!email.includes('@')) {
+        setError('Bitte gib eine gültige E-Mail Adresse ein.');
         setLoading(false);
         return;
       }
@@ -61,14 +61,14 @@ const LoginPage: NextPage = ({
       //Check if password is long enough
       if (password.length < 6) {
         setLoading(false);
-        setError("Das Passwort muss mindestens 6 Zeichen lang sein.");
+        setError('Das Passwort muss mindestens 6 Zeichen lang sein.');
         return;
       }
 
       //Check if passwords match
       if (password !== passwordConfirm) {
         setLoading(false);
-        setError("Die Passwörter stimmen nicht überein.");
+        setError('Die Passwörter stimmen nicht überein.');
         return;
       }
 
@@ -82,9 +82,9 @@ const LoginPage: NextPage = ({
     } catch (error: any) {
       let e = getFirebaseErrorTranslation(error.code);
       setError(
-        e.toClient !== "default"
+        e.toClient !== 'default'
           ? e.toClient
-          : "Etwas ist schief gelaufen. Bitte versuche es erneut."
+          : 'Etwas ist schief gelaufen. Bitte versuche es erneut.'
       );
       console.log(e.toDev);
     }
@@ -94,21 +94,26 @@ const LoginPage: NextPage = ({
 
   function pushAndClearStack(route: string) {
     router.push(route);
-    Router.events.on("routeChangeComplete", () => {
-      window.history.replaceState(null, "", window.location.href);
+    Router.events.on('routeChangeComplete', () => {
+      window.history.replaceState(null, '', window.location.href);
     });
   }
 
   useEffect(() => {
-    console.log("login user change detected ", user);
+    console.log('login user change detected ', user);
     if (user.uid) {
-      if (redirect && redirect !== "/login" && redirect !== "") {
+      if (
+        redirect !== undefined &&
+        redirect !== null &&
+        redirect !== '/login' &&
+        redirect !== ''
+      ) {
         pushAndClearStack(redirect);
       } else {
         if (!isUserComplete(user)) {
-          pushAndClearStack("/profile/settings");
+          pushAndClearStack('/profile/settings');
         } else {
-          pushAndClearStack("/dashboard");
+          pushAndClearStack('/dashboard');
         }
       }
     }
@@ -119,7 +124,7 @@ const LoginPage: NextPage = ({
       makeSwitch={makeSwitch}
       social={social}
       content={
-        <div className={styles.wrapper + " page"}>
+        <div className={styles.wrapper + ' page'}>
           <div className={styles.bg}>
             <img
               src="https://firebasestorage.googleapis.com/v0/b/pyro-development.appspot.com/o/bg_element.png?alt=media&token=bc474d4e-a12f-4020-ab36-9059cc7fe1a8"
@@ -161,15 +166,15 @@ const LoginPage: NextPage = ({
               )}
               <div className={styles.row}>
                 <ActionButton
-                  height={"50px"}
-                  width={"100%"}
+                  height={'50px'}
+                  width={'100%'}
                   loading={loading}
                   onClick={onSubmit}
                   title="Einloggen"
                 />
               </div>
               <div className={styles.signup_cta}>
-                Du hast bereits ein Konto?{" "}
+                Du hast bereits ein Konto?{' '}
                 <span
                   className={styles.signup_cta_link}
                   onClick={() => {
